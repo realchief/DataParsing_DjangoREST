@@ -5,9 +5,15 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
+from .models import Vacancy, Company, City
 from rest_framework import viewsets
+
 from recruiting.serializers import UserSerializer
 from recruiting.serializers import GroupSerializer
+from recruiting.serializers import VacancySerializer
+from recruiting.serializers import CompanySerializer
+from recruiting.serializers import CitySerializer
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import requests
@@ -36,7 +42,7 @@ class GroupViewSet(viewsets.ModelViewSet):
 class Parser(APIView):
 
     def get(self, request, format=None):
-        locationkey = request.path.split('/')[-1]
+        # locationkey = request.path.split('/')[-1]
         start_requests = 'https://www.trainee.de/traineestellen/'
         r = requests.get(start_requests)
         dom = html.fromstring(r.text)
@@ -70,22 +76,26 @@ class Parser(APIView):
             else:
                 location = None
 
-            json_data = {
+            json_data_Vacancy = {
                 "is_active": "true",
                 "title": title,
-                "location": location,
-                "image_list": image_list,
-                "company": {
-                    "name": company_name,
-                    "location": location
-                }
+                "description": 'description'
             }
 
+            json_data_Company = {
+                "name": company_name,
+                "image_list": image_list
+            }
 
+            json_data_City = {
+                "location": location
+            }
 
+            serializer_Vacancy = VacancySerializer(data=json_data_Vacancy)
+            serializer_Company = CompanySerializer(data=json_data_Company)
+            serializer_City = CitySerializer(data=json_data_City)
 
-
-        return Response(list, status=status.HTTP_200_OK)
+        return Response("Inserting Success", status=status.HTTP_200_OK)
 
 
 
