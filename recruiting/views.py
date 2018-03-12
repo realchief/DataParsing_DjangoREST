@@ -37,8 +37,7 @@ class Parser(APIView):
 
     def get(self, request, format=None):
         locationkey = request.path.split('/')[-1]
-        start_requests = 'https://www.trainee.de/traineestellen/?search_job%5Bquery%5D=&search_job%5Blocation%' \
-                         '5D=' + locationkey + '&search_job%5Bdistance%5D=25'
+        start_requests = 'https://www.trainee.de/traineestellen/'
         r = requests.get(start_requests)
         dom = html.fromstring(r.text)
 
@@ -82,7 +81,9 @@ class Parser(APIView):
                 }
             }
 
-            list.append(json_data)
+
+
+
 
         return Response(list, status=status.HTTP_200_OK)
 

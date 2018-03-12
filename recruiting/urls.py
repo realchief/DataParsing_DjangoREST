@@ -10,7 +10,7 @@ router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 
 urlpatterns = [
-    # url(r'^$', views.index, name='index'),
     url(r'^', include(router.urls)),
-    url(r'^api/parser/.*?$', views.Parser.as_view()),
+    url(r'^api/parser', views.Parser.as_view()),
+    url(r'^api/vacancies/.*?$', views.Parser.as_view()),
     ]
