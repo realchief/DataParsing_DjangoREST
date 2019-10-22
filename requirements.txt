@@ -13,7 +13,7 @@ jieba3k==0.35.1
 lxml==4.1.1
 newspaper3k==0.2.6
 nltk==3.2.5
-Pillow==5.0.0
+Pillow==6.2.0
 PyAutoGUI==0.9.36
 Pygments==2.2.0
 PyMsgBox==1.0.6
