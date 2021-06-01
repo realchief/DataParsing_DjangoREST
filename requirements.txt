@@ -30,5 +30,5 @@ requests-file==1.4.3
 selenium==3.8.1
 six==1.11.0
 tldextract==2.2.0
-urllib3==1.22
+urllib3==1.26.5
 xlib==0.21
