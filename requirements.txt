@@ -7,7 +7,7 @@ django-widget-tweaks==1.4.1
 djangorestframework==3.7.7
 feedfinder2==0.0.4
 feedparser==5.2.1
-httpie==0.9.9
+httpie==3.1.0
 idna==2.6
 jieba3k==0.35.1
 lxml==4.1.1
